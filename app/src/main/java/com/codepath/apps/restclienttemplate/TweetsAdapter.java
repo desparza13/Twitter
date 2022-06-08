@@ -16,8 +16,8 @@ import com.codepath.apps.restclienttemplate.models.Tweet;
 import java.util.List;
 
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
-    Context context;
-    List<Tweet> tweets;
+    private Context context;
+    private List<Tweet> tweets;
 
     //Pass in the context and list of tweets
     public TweetsAdapter(Context context, List<Tweet> tweets) {
@@ -47,8 +47,6 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         return tweets.size();
     }
 
-
-
     //Define a viewholder
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView ivProfileImage;
@@ -68,5 +66,18 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
         }
+    }
+
+    //Refresh timeline
+    //Clean all elements of the recycler
+    public void clear() {
+        tweets.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<Tweet> list) {
+        tweets.addAll(list);
+        notifyDataSetChanged();
     }
 }
