@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
@@ -79,11 +80,11 @@ public class TimelineActivity extends AppCompatActivity {
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // same as above
         startActivity(i);
     }
-    //Menu (Used to create logout button)
-    //Create menu including button
+    //Menu (Used to create logout button and edit)
+    //Inflate menu including button (items) if present
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.timeline, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
     @Override
@@ -92,6 +93,12 @@ public class TimelineActivity extends AppCompatActivity {
             case R.id.logout:{
                 Log.d(TAG, "logging out");
                 onLogoutButton();
+                return true;
+            }
+            case R.id.compose:{
+                Log.d(TAG,"composing tweet");
+                Toast.makeText(this,"Compose!",Toast.LENGTH_SHORT).show();
+                //Navigate to the compose activity
                 return true;
             }
         }
