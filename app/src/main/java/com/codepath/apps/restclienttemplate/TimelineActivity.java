@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,9 +33,9 @@ public class TimelineActivity extends AppCompatActivity {
     private List<Tweet> tweets;
     private TweetsAdapter adapter;
     private SwipeRefreshLayout swipeContainer;
+    public MenuItem actionProgressItem;
     public static final String TAG = "TimelineActivity";
     public final int REQUEST_CODE = 20;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,7 @@ public class TimelineActivity extends AppCompatActivity {
             }
         });
     }
+
     void onLogoutButton() {
         // forget who's logged in
         TwitterApp.getRestClient(this).clearAccessToken();
@@ -106,12 +108,30 @@ public class TimelineActivity extends AppCompatActivity {
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // same as above
         startActivity(i);
     }
+
     //Menu (Used to create logout button and edit)
     //Inflate menu including button (items) if present
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Store instance of the menu item containing progress
+        actionProgressItem = menu.findItem(R.id.miActionProgress);
+
+        // Return to finish
+        return super.onPrepareOptionsMenu(menu);
+    }
+    public void showProgressBar() {
+        // Show progress item
+        actionProgressItem.setVisible(true);
+    }
+
+    public void hideProgressBar() {
+        // Hide progress item
+        actionProgressItem.setVisible(false);
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -131,8 +151,10 @@ public class TimelineActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     protected  void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        hideProgressBar();
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK){
             //Get data from the intent (tweet)
             Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
@@ -144,7 +166,9 @@ public class TimelineActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
     public void fetchTimelineAsync(int page) {
+        showProgressBar();
         // Send the network request to fetch the updated data
         // `client` here is an instance of Android Async HTTP
         // getHomeTimeline is an example endpoint.
@@ -158,6 +182,7 @@ public class TimelineActivity extends AppCompatActivity {
                 adapter.addAll(tweets);
                 // Now we call setRefreshing(false) to signal refresh has finished
                 swipeContainer.setRefreshing(false);
+                hideProgressBar();
             }
 
             @Override
@@ -167,7 +192,4 @@ public class TimelineActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
 }
