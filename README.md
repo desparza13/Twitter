@@ -13,20 +13,26 @@ The following **required** functionality is completed:
 
 * [✔️]	User can **view tweets from their home timeline**
   * [✔️] User is displayed the username, name, and body for each tweet
+  * ![timeline](https://user-images.githubusercontent.com/56266109/173122968-c3889245-5a15-4c0e-b53f-79bf94bb5cfb.gif)
 * [✔️] User can **compose and post a new tweet**
 * ![composeToast](https://user-images.githubusercontent.com/56266109/172922235-f2306ba1-7414-42d1-a4a3-030122a9b02e.gif)
   * [✔️] User can click a “Compose” icon in the Action Bar on the top right
   * [✔️] User can then enter a new tweet and post this to Twitter
+  ![composing](https://user-images.githubusercontent.com/56266109/173123369-3b7075af-243d-445e-81d1-6ab38d644363.gif)
   * [✔️] User is taken back to home timeline with **new tweet visible** in timeline
   * [✔️] Newly created tweet should be manually inserted into the timeline and not rely on a full refresh
 * [✔️] User can **see a counter with total number of characters left for tweet** on compose tweet page
 * [✔️] User can **pull down to refresh tweets timeline**
+* ![refresh](https://user-images.githubusercontent.com/56266109/173123559-0b1c6feb-2968-4f04-b8ca-739bac4cc6ff.gif)
 * [✔️] User can **see embedded image media within a tweet** on list or detail view.
+<img width="286" alt="Screen Shot 2022-06-10 at 10 53 39 AM" src="https://user-images.githubusercontent.com/56266109/173123607-bc5143ed-ed35-4c16-bb0f-e0dcf5e7c104.png">
 
 The following **optional** features are implemented:
 * [✔️] User is displayed the [relative timestamp](https://gist.github.com/nesquena/f786232f5ef72f6e10a7) for each tweet "8m", "7h"
+* <img width="272" alt="Screen Shot 2022-06-10 at 10 54 00 AM" src="https://user-images.githubusercontent.com/56266109/173123661-f4026f34-b42d-419c-92ee-be2c5b1ffe4d.png">
 * [ ] User is using **"Twitter branded" colors and styles**
 * [✔️] User sees an **indeterminate progress indicator** when any background or network task is happening
+* ![progress](https://user-images.githubusercontent.com/56266109/173123787-3125ca99-9361-42c6-a260-05886104bfe7.gif)
 * [ ] User can **select "reply" from home timeline to respond to a tweet**
   * [ ] User that wrote the original tweet is **automatically "@" replied in compose**
 * [ ] User can tap a tweet to **open a detailed tweet view**
