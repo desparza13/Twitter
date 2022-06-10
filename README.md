@@ -23,7 +23,8 @@ The following **required** functionality is completed:
   * [✔️] Newly created tweet should be manually inserted into the timeline and not rely on a full refresh
 * [✔️] User can **see a counter with total number of characters left for tweet** on compose tweet page
 * [✔️] User can **pull down to refresh tweets timeline**
-* ![refresh](https://user-images.githubusercontent.com/56266109/173123559-0b1c6feb-2968-4f04-b8ca-739bac4cc6ff.gif)
+* ![refresh]
+* (https://user-images.githubusercontent.com/56266109/173123559-0b1c6feb-2968-4f04-b8ca-739bac4cc6ff.gif)
 * [✔️] User can **see embedded image media within a tweet** on list or detail view.
 <img width="286" alt="Screen Shot 2022-06-10 at 10 53 39 AM" src="https://user-images.githubusercontent.com/56266109/173123607-bc5143ed-ed35-4c16-bb0f-e0dcf5e7c104.png">
 
@@ -55,12 +56,13 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![timeline](https://user-images.githubusercontent.com/56266109/173124530-8f10c089-ad34-494d-9bca-913463938956.gif)
+
 
 GIF created with [Kap](https://getkap.co/).
 
 ## Notes
-
-Describe any challenges encountered while building the app.
+I encountered issues while building the relative timestamp, because depending on how do you calculate the time span between the creation of the tweet and the actual time, you could get a negative number and always show just now. To solve it you only need to be sure you are either using the absolute value of the difference, or you are substracting the createdAt to the now
 
 ## Open-source libraries used
 
